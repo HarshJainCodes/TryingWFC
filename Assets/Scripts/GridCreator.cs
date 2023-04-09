@@ -115,6 +115,7 @@ public class GridCreator : MonoBehaviour
     bool progress = true;
     void Start()
     {
+        // just checking this code should have different tileset than the default tileset.
         // we have total of 5 tiles currently
  
         tiles.Add(new Tile(BLANK, new List<int>() { 0, 0, 0, 0}));
