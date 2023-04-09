@@ -94,14 +94,23 @@ public class Tile
 
 public class GridCreator : MonoBehaviour
 {
-    [SerializeField] GameObject BLANK;
-    [SerializeField] GameObject UP;
-    [SerializeField] GameObject RIGHT;
-    [SerializeField] GameObject DOWN;
-    [SerializeField] GameObject LEFT;
+    [SerializeField] GameObject Plane1;
+    [SerializeField] GameObject Plane2;
+    [SerializeField] GameObject Plane3;
+    [SerializeField] GameObject Plane4;
+    [SerializeField] GameObject Plane5;
+    [SerializeField] GameObject Plane6;
+    [SerializeField] GameObject Plane7;
+    [SerializeField] GameObject Plane8;
+    [SerializeField] GameObject Plane9;
+    [SerializeField] GameObject Plane10;
+    [SerializeField] GameObject Plane11;
+    [SerializeField] GameObject Plane12;
+    [SerializeField] GameObject Plane13;
+    [SerializeField] GameObject Plane14;
 
     // list of materials that can be swap out incase of a match
-    [SerializeField] List<Material> quadmaterials = new List<Material>();
+    //[SerializeField] List<Material> quadmaterials = new List<Material>();
 
     [SerializeField] List<Tile> tiles = new List<Tile>();
 
@@ -118,13 +127,22 @@ public class GridCreator : MonoBehaviour
         // just checking this code should have different tileset than the default tileset.
         // we have total of 5 tiles currently
  
-        tiles.Add(new Tile(BLANK, new List<int>() { 0, 0, 0, 0}));
-        tiles.Add(new Tile(UP, new List<int>() { 1, 1, 0, 1 }));
-        tiles.Add(new Tile(RIGHT, new List<int>() { 1, 1, 1, 0 }));
-        tiles.Add(new Tile(DOWN, new List<int>() { 0, 1, 1, 1}));
-        tiles.Add(new Tile(LEFT, new List<int>() { 1, 0, 1, 1 }));
+        tiles.Add(new Tile(Plane1, new List<int>() { 0, 0, 0, 0}));
+        tiles.Add(new Tile(Plane2, new List<int>() { 1, 1, 0, 1 }));
+        tiles.Add(new Tile(Plane3, new List<int>() { 1, 1, 1, 0 }));
+        tiles.Add(new Tile(Plane4, new List<int>() { 0, 1, 1, 1}));
+        tiles.Add(new Tile(Plane5, new List<int>() { 1, 0, 1, 1 }));
+        tiles.Add(new Tile(Plane6, new List<int>() { 0, 0, 0, 0 }));
+        tiles.Add(new Tile(Plane7, new List<int>() { 1, 1, 0, 1 }));
+        tiles.Add(new Tile(Plane8, new List<int>() { 1, 1, 1, 0 }));
+        tiles.Add(new Tile(Plane9, new List<int>() { 0, 1, 1, 1 }));
+        tiles.Add(new Tile(Plane10, new List<int>() { 1, 0, 1, 1 }));
+        tiles.Add(new Tile(Plane11, new List<int>() { 0, 0, 0, 0 }));
+        tiles.Add(new Tile(Plane12, new List<int>() { 1, 1, 0, 1 }));
+        tiles.Add(new Tile(Plane13, new List<int>() { 1, 1, 1, 0 }));
+        tiles.Add(new Tile(Plane14, new List<int>() { 0, 1, 1, 1 }));
 
-        tilesGO = new List<GameObject>() { BLANK, UP, RIGHT, DOWN, LEFT};  
+        tilesGO = new List<GameObject>() { Plane1, Plane2, Plane3, Plane4, Plane5, Plane6, Plane7, Plane8, Plane9, Plane10, Plane11, Plane12, Plane13, Plane14};  
 
         Tile.GenerateTileRules(tiles);
 
@@ -235,7 +253,7 @@ public class GridCreator : MonoBehaviour
         //swapQuadMatScript.SwapMat(quadmaterials[lowestEntropy.cell.options[0]]);
         Destroy(gridGO[lowestEntropy.gridX][lowestEntropy.gridY]);
 
-        GameObject tileGameObject = Instantiate(tilesGO[lowestEntropy.cell.options[0]], new Vector3(lowestEntropy.gridY, 0, -lowestEntropy.gridX), Quaternion.identity);
+        GameObject tileGameObject = Instantiate(tilesGO[lowestEntropy.cell.options[0]], new Vector3(2 * lowestEntropy.gridY, 0, -2 * lowestEntropy.gridX), Quaternion.identity);
         tileGameObject.transform.SetParent(transform);
         gridGO[lowestEntropy.gridX][lowestEntropy.gridY] = tileGameObject;
 
@@ -306,7 +324,7 @@ public class GridCreator : MonoBehaviour
             {
                 //GameObject tile = null;
 
-                GameObject tile = Instantiate(BLANK, new Vector3(j, 0, -i), Quaternion.identity);
+                GameObject tile = Instantiate(Plane1, new Vector3(j, 0, -i), Quaternion.identity);
                 tile.SetActive(false);
                 tile.transform.SetParent(transform);
 
