@@ -110,6 +110,7 @@ public class GridCreator : MonoBehaviour
 
     List<List<Cell>> grid = new List<List<Cell>>();
     List<List<GameObject>> gridGO = new List<List<GameObject>> ();
+    List<GameObject> tilesGO;
 
     bool progress = true;
     void Start()
@@ -122,11 +123,13 @@ public class GridCreator : MonoBehaviour
         tiles.Add(new Tile(DOWN, new List<int>() { 0, 1, 1, 1}));
         tiles.Add(new Tile(LEFT, new List<int>() { 1, 0, 1, 1 }));
 
+        tilesGO = new List<GameObject>() { BLANK, UP, RIGHT, DOWN, LEFT};  
+
         Tile.GenerateTileRules(tiles);
 
         GenerateGrid();
 
-        Camera.main.transform.position = new Vector3(((float)ROW - 1)/2, 40, -7);
+        Camera.main.transform.position = new Vector3(((float)ROW - 1)/2, 10, -7);
 
         // initialize an empty ROW X COL grid
         for (int i = 0; i < ROW; i++)
@@ -224,11 +227,18 @@ public class GridCreator : MonoBehaviour
         lowestEntropy.cell.options = new List<int>() { lowestEntropy.cell.options[UnityEngine.Random.Range(0, lowestEntropy.cell.options.Count)]};
 
         // since it is collapsed make it visible
-        gridGO[lowestEntropy.gridX][lowestEntropy.gridY].SetActive(true);
+        //gridGO[lowestEntropy.gridX][lowestEntropy.gridY].SetActive(true);
 
         // change its material to the option that it has chosen
         SwapQuadMat swapQuadMatScript = gridGO[lowestEntropy.gridX][lowestEntropy.gridY].GetComponent<SwapQuadMat>();
-        swapQuadMatScript.SwapMat(quadmaterials[lowestEntropy.cell.options[0]]);
+        //swapQuadMatScript.SwapMat(quadmaterials[lowestEntropy.cell.options[0]]);
+        Destroy(gridGO[lowestEntropy.gridX][lowestEntropy.gridY]);
+
+        GameObject tileGameObject = Instantiate(tilesGO[lowestEntropy.cell.options[0]], new Vector3(lowestEntropy.gridY, 0, -lowestEntropy.gridX), Quaternion.identity);
+        tileGameObject.transform.SetParent(transform);
+        gridGO[lowestEntropy.gridX][lowestEntropy.gridY] = tileGameObject;
+
+
 
         // now decrease the entropy of the nearby surrounding it.
         int randomRow = lowestEntropy.gridX;
@@ -293,6 +303,8 @@ public class GridCreator : MonoBehaviour
             List<GameObject> gridGORow = new List<GameObject>();
             for (int j = 0; j < COL; j++)
             {
+                //GameObject tile = null;
+
                 GameObject tile = Instantiate(BLANK, new Vector3(j, 0, -i), Quaternion.identity);
                 tile.SetActive(false);
                 tile.transform.SetParent(transform);
