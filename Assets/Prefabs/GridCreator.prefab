@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4370898495540912445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4370898495540912447}
+  - component: {fileID: 4370898495540912446}
+  m_Layer: 0
+  m_Name: GridCreator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4370898495540912447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370898495540912445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4370898495540912446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370898495540912445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181c41ced7b35234b80cff04c9f26856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Plane1: {fileID: 3058963977665408580, guid: 09eaf70fd4be86e45947a66c590dc735, type: 3}
+  Plane2: {fileID: 4910388007106472389, guid: bace770712cb7864aba7ebb1556c0abc, type: 3}
+  Plane3: {fileID: 2519495528350583482, guid: 4ee1c84334f9ac142afc92bf2a27e738, type: 3}
+  Plane4: {fileID: 4810176883162729605, guid: f36bf304bef313341abd0c39ebf5bdc1, type: 3}
+  Plane5: {fileID: 661964853603594313, guid: 72f40f942e15ac84d8db78d05e0df15a, type: 3}
+  Plane6: {fileID: 4954567387600282553, guid: d2cdab0b4ccbf7e468fa202f4ebc8f8b, type: 3}
+  Plane7: {fileID: 1627852661213507720, guid: 3e524a984c4af174f9ac7bac0bfbaf48, type: 3}
+  Plane8: {fileID: 5664039675482150872, guid: 6f883651e67180944819198625246879, type: 3}
+  Plane9: {fileID: 8245096870489413594, guid: e4bf334332376e24bb917ee3b556181e, type: 3}
+  Plane10: {fileID: 3426570331238548480, guid: cf2adbd8693ce4f43ad744cd8b0375e6, type: 3}
+  Plane11: {fileID: 8195239266303847187, guid: 0632bb58e3c29db4a9c4a7ae54e9330c, type: 3}
+  Plane12: {fileID: 2106645423774261568, guid: 0f3cc4e4e3359274c8ccc7c303c090d1, type: 3}
+  Plane13: {fileID: 6274142107296117969, guid: 90aaff6b28da3a845bc858a0362ae62f, type: 3}
+  Plane14: {fileID: 811333317922511713, guid: 7e40decff8845f842a47cbc2839bbf35, type: 3}
+  tiles: []
