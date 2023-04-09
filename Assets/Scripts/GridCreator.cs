@@ -108,14 +108,17 @@ public class GridCreator : MonoBehaviour
     [SerializeField] GameObject Plane12;
     [SerializeField] GameObject Plane13;
     [SerializeField] GameObject Plane14;
+    [SerializeField] GameObject Plane15;
+    [SerializeField] GameObject Plane16;
+    [SerializeField] GameObject Plane17;
 
     // list of materials that can be swap out incase of a match
     //[SerializeField] List<Material> quadmaterials = new List<Material>();
 
     [SerializeField] List<Tile> tiles = new List<Tile>();
 
-    int ROW = 10;
-    int COL = 10;
+    int ROW = 30;
+    int COL = 30;
 
     List<List<Cell>> grid = new List<List<Cell>>();
     List<List<GameObject>> gridGO = new List<List<GameObject>> ();
@@ -127,22 +130,25 @@ public class GridCreator : MonoBehaviour
         // just checking this code should have different tileset than the default tileset.
         // we have total of 5 tiles currently
  
-        tiles.Add(new Tile(Plane1, new List<int>() { 0, 0, 0, 0}));
-        tiles.Add(new Tile(Plane2, new List<int>() { 1, 1, 0, 1 }));
-        tiles.Add(new Tile(Plane3, new List<int>() { 1, 1, 1, 0 }));
-        tiles.Add(new Tile(Plane4, new List<int>() { 0, 1, 1, 1}));
-        tiles.Add(new Tile(Plane5, new List<int>() { 1, 0, 1, 1 }));
-        tiles.Add(new Tile(Plane6, new List<int>() { 0, 0, 0, 0 }));
-        tiles.Add(new Tile(Plane7, new List<int>() { 1, 1, 0, 1 }));
-        tiles.Add(new Tile(Plane8, new List<int>() { 1, 1, 1, 0 }));
-        tiles.Add(new Tile(Plane9, new List<int>() { 0, 1, 1, 1 }));
-        tiles.Add(new Tile(Plane10, new List<int>() { 1, 0, 1, 1 }));
-        tiles.Add(new Tile(Plane11, new List<int>() { 0, 0, 0, 0 }));
-        tiles.Add(new Tile(Plane12, new List<int>() { 1, 1, 0, 1 }));
-        tiles.Add(new Tile(Plane13, new List<int>() { 1, 1, 1, 0 }));
-        tiles.Add(new Tile(Plane14, new List<int>() { 0, 1, 1, 1 }));
+        tiles.Add(new Tile(Plane1, new List<int>() { 1, 0, 2, 0}));
+        tiles.Add(new Tile(Plane2, new List<int>() { 1, 1, 1, 1 }));
+        tiles.Add(new Tile(Plane3, new List<int>() { 0, 1, 0, 2 }));
+        tiles.Add(new Tile(Plane4, new List<int>() { 2, 0, 1, 0}));
+        tiles.Add(new Tile(Plane5, new List<int>() { 3, 4, 3, 1 }));
+        tiles.Add(new Tile(Plane6, new List<int>() { 2, 4, 2, 4 }));
+        tiles.Add(new Tile(Plane7, new List<int>() { 2, 5, 2, 5 }));
+        tiles.Add(new Tile(Plane8, new List<int>() { 1, 0, 2, 0 }));
+        tiles.Add(new Tile(Plane9, new List<int>() { 2, 2, 2, 5 }));
+        tiles.Add(new Tile(Plane10, new List<int>() { 2, 2, 5, 2 }));
+        tiles.Add(new Tile(Plane11, new List<int>() { 3, 2, 2, 3 }));
+        tiles.Add(new Tile(Plane12, new List<int>() { 0, 0, 2, 2 }));
+        tiles.Add(new Tile(Plane13, new List<int>() { 2, 3, 0, 2 }));
+        tiles.Add(new Tile(Plane14, new List<int>() { 2, 2, 3, 0 }));
+        tiles.Add(new Tile(Plane15, new List<int>() { 0, 1, 0, 4 }));
+        tiles.Add(new Tile(Plane16, new List<int>() { 4, 3, 1, 3 }));
+        tiles.Add(new Tile(Plane17, new List<int>() { 1, 0, 4, 0 }));
 
-        tilesGO = new List<GameObject>() { Plane1, Plane2, Plane3, Plane4, Plane5, Plane6, Plane7, Plane8, Plane9, Plane10, Plane11, Plane12, Plane13, Plane14};  
+        tilesGO = new List<GameObject>() { Plane1, Plane2, Plane3, Plane4, Plane5, Plane6, Plane7, Plane8, Plane9, Plane10, Plane11, Plane12, Plane13, Plane14, Plane15, Plane16, Plane17};  
 
         Tile.GenerateTileRules(tiles);
 
@@ -161,7 +167,7 @@ public class GridCreator : MonoBehaviour
             grid.Add(row);
         }
 
-        grid[2][2].options = new List<int>() {2};
+        grid[2][2].options = new List<int>() {0};
     }
 
     void Update()
@@ -243,6 +249,9 @@ public class GridCreator : MonoBehaviour
         lowestEntropy.cell.collapsed = true;
 
         // since that cell is collapsed it only has one option
+        if (lowestEntropy.cell.options.Count == 0) return;
+        Debug.Log(lowestEntropy.cell.options.Count);
+
         lowestEntropy.cell.options = new List<int>() { lowestEntropy.cell.options[UnityEngine.Random.Range(0, lowestEntropy.cell.options.Count)]};
 
         // since it is collapsed make it visible
