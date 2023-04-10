@@ -171,7 +171,7 @@ public class GridCreator : MonoBehaviour
 
         GenerateGrid();
 
-        Camera.main.transform.position = new Vector3(((float)ROW - 1)/2, 10, -7);
+        //Camera.main.transform.position = new Vector3(((float)ROW - 1)/2, 10, -7);
 
         // initialize an empty ROW X COL grid
         for (int i = 0; i < ROW; i++)
