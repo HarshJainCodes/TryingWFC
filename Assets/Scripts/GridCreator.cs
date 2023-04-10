@@ -136,6 +136,7 @@ public class GridCreator : MonoBehaviour
     void Start()
     {
         // just checking this code should have different tileset than the default tileset.
+        // this is the trying door end branch
         // we have total of 5 tiles currently
  
         tiles.Add(new Tile(Block0, new List<int>() { 0, 0, 0, 0}));
@@ -154,10 +155,10 @@ public class GridCreator : MonoBehaviour
         tiles.Add(new Tile(Block33, new List<int>() { 1, 0, 1, 0}));
      
 
-        tiles.Add(new Tile(Block4, new List<int>() { 1, 2, 1, 1}));
+        /*tiles.Add(new Tile(Block4, new List<int>() { 1, 2, 1, 1}));
         tiles.Add(new Tile(Block44, new List<int>() { 1, 1, 2, 1}));
         tiles.Add(new Tile(Block444, new List<int>() { 1, 1, 1, 2}));
-        tiles.Add(new Tile(Block4444, new List<int>() { 2, 1, 1, 1}));
+        tiles.Add(new Tile(Block4444, new List<int>() { 2, 1, 1, 1}));*/
 
         tiles.Add(new Tile(Block5, new List<int>() { 0, 0, 1, 1}));
         tiles.Add(new Tile(Block55, new List<int>() { 1, 0, 0, 1}));
@@ -165,7 +166,7 @@ public class GridCreator : MonoBehaviour
         tiles.Add(new Tile(Block5555, new List<int>() { 0, 1, 1, 0}));
       
 
-        tilesGO = new List<GameObject>() { Block0, Block1, Block11, Block111, Block1111, Block2, Block22, Block222, Block2222, Block3, Block33, Block4, Block44, Block444, Block4444, Block5, Block55, Block555, Block5555};
+        tilesGO = new List<GameObject>() { Block0, Block1, Block11, Block111, Block1111, Block2, Block22, Block222, Block2222, Block3, Block33, Block5, Block55, Block555, Block5555};
 
         Tile.GenerateTileRules(tiles);
 
