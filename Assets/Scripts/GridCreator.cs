@@ -94,31 +94,39 @@ public class Tile
 
 public class GridCreator : MonoBehaviour
 {
-    [SerializeField] GameObject Plane1;
-    [SerializeField] GameObject Plane2;
-    [SerializeField] GameObject Plane3;
-    [SerializeField] GameObject Plane4;
-    [SerializeField] GameObject Plane5;
-    [SerializeField] GameObject Plane6;
-    [SerializeField] GameObject Plane7;
-    [SerializeField] GameObject Plane8;
-    [SerializeField] GameObject Plane9;
-    [SerializeField] GameObject Plane10;
-    [SerializeField] GameObject Plane11;
-    [SerializeField] GameObject Plane12;
-    [SerializeField] GameObject Plane13;
-    [SerializeField] GameObject Plane14;
-    [SerializeField] GameObject Plane15;
-    [SerializeField] GameObject Plane16;
-    [SerializeField] GameObject Plane17;
+    [SerializeField] GameObject Block0;
+
+    [SerializeField] GameObject Block1;
+    [SerializeField] GameObject Block11;
+    [SerializeField] GameObject Block111;
+    [SerializeField] GameObject Block1111;
+
+    [SerializeField] GameObject Block2;
+    [SerializeField] GameObject Block22;
+    [SerializeField] GameObject Block222;
+    [SerializeField] GameObject Block2222;
+
+    [SerializeField] GameObject Block3;
+    [SerializeField] GameObject Block33;
+
+    [SerializeField] GameObject Block4;
+    [SerializeField] GameObject Block44;
+    [SerializeField] GameObject Block444;
+    [SerializeField] GameObject Block4444;
+
+    [SerializeField] GameObject Block5;
+    [SerializeField] GameObject Block55;
+    [SerializeField] GameObject Block555;
+    [SerializeField] GameObject Block5555;
+    
 
     // list of materials that can be swap out incase of a match
     //[SerializeField] List<Material> quadmaterials = new List<Material>();
 
     [SerializeField] List<Tile> tiles = new List<Tile>();
 
-    int ROW = 30;
-    int COL = 30;
+    int ROW = 20;
+    int COL = 20;
 
     List<List<Cell>> grid = new List<List<Cell>>();
     List<List<GameObject>> gridGO = new List<List<GameObject>> ();
@@ -130,25 +138,34 @@ public class GridCreator : MonoBehaviour
         // just checking this code should have different tileset than the default tileset.
         // we have total of 5 tiles currently
  
-        tiles.Add(new Tile(Plane1, new List<int>() { 1, 0, 2, 0}));
-        tiles.Add(new Tile(Plane2, new List<int>() { 1, 1, 1, 1 }));
-        tiles.Add(new Tile(Plane3, new List<int>() { 0, 1, 0, 2 }));
-        tiles.Add(new Tile(Plane4, new List<int>() { 2, 0, 1, 0}));
-        tiles.Add(new Tile(Plane5, new List<int>() { 3, 4, 3, 1 }));
-        tiles.Add(new Tile(Plane6, new List<int>() { 2, 4, 2, 4 }));
-        tiles.Add(new Tile(Plane7, new List<int>() { 2, 5, 2, 5 }));
-        tiles.Add(new Tile(Plane8, new List<int>() { 1, 0, 2, 0 }));
-        tiles.Add(new Tile(Plane9, new List<int>() { 2, 2, 2, 5 }));
-        tiles.Add(new Tile(Plane10, new List<int>() { 2, 2, 5, 2 }));
-        tiles.Add(new Tile(Plane11, new List<int>() { 3, 2, 2, 3 }));
-        tiles.Add(new Tile(Plane12, new List<int>() { 0, 0, 2, 2 }));
-        tiles.Add(new Tile(Plane13, new List<int>() { 2, 3, 0, 2 }));
-        tiles.Add(new Tile(Plane14, new List<int>() { 2, 2, 3, 0 }));
-        tiles.Add(new Tile(Plane15, new List<int>() { 0, 1, 0, 4 }));
-        tiles.Add(new Tile(Plane16, new List<int>() { 4, 3, 1, 3 }));
-        tiles.Add(new Tile(Plane17, new List<int>() { 1, 0, 4, 0 }));
+        tiles.Add(new Tile(Block0, new List<int>() { 0, 0, 0, 0}));
 
-        tilesGO = new List<GameObject>() { Plane1, Plane2, Plane3, Plane4, Plane5, Plane6, Plane7, Plane8, Plane9, Plane10, Plane11, Plane12, Plane13, Plane14, Plane15, Plane16, Plane17};  
+        tiles.Add(new Tile(Block1, new List<int>() { 1, 1, 0, 1}));
+        tiles.Add(new Tile(Block11, new List<int>() { 1, 1, 1, 0}));
+        tiles.Add(new Tile(Block111, new List<int>() { 0, 1, 1, 1}));
+        tiles.Add(new Tile(Block1111, new List<int>() { 1, 0, 1, 1}));
+
+        tiles.Add(new Tile(Block2, new List<int>() { 0, 0, 1, 0}));
+        tiles.Add(new Tile(Block22, new List<int>() { 0, 0, 0, 1}));
+        tiles.Add(new Tile(Block222, new List<int>() { 1, 0, 0, 0}));
+        tiles.Add(new Tile(Block2222, new List<int>() { 0, 1, 0, 0}));
+
+        tiles.Add(new Tile(Block3, new List<int>() { 0, 1, 0, 1}));
+        tiles.Add(new Tile(Block33, new List<int>() { 1, 0, 1, 0}));
+     
+
+        tiles.Add(new Tile(Block4, new List<int>() { 1, 2, 1, 1}));
+        tiles.Add(new Tile(Block44, new List<int>() { 1, 1, 2, 1}));
+        tiles.Add(new Tile(Block444, new List<int>() { 1, 1, 1, 2}));
+        tiles.Add(new Tile(Block4444, new List<int>() { 2, 1, 1, 1}));
+
+        tiles.Add(new Tile(Block5, new List<int>() { 0, 0, 1, 1}));
+        tiles.Add(new Tile(Block55, new List<int>() { 1, 0, 0, 1}));
+        tiles.Add(new Tile(Block555, new List<int>() { 1, 1, 0, 0}));
+        tiles.Add(new Tile(Block5555, new List<int>() { 0, 1, 1, 0}));
+      
+
+        tilesGO = new List<GameObject>() { Block0, Block1, Block11, Block111, Block1111, Block2, Block22, Block222, Block2222, Block3, Block33, Block4, Block44, Block444, Block4444, Block5, Block55, Block555, Block5555};
 
         Tile.GenerateTileRules(tiles);
 
@@ -167,14 +184,14 @@ public class GridCreator : MonoBehaviour
             grid.Add(row);
         }
 
-        grid[2][2].options = new List<int>() {0};
+        grid[2][2].options = new List<int>() {3};
     }
 
     void Update()
     {
         int lowestEntropy = FindCellWithLowestEntropy();
 
-        if (lowestEntropy < 0 || lowestEntropy > 5)
+        if (lowestEntropy < 0 || lowestEntropy > 30)
         {
            return;
         }
@@ -250,7 +267,7 @@ public class GridCreator : MonoBehaviour
 
         // since that cell is collapsed it only has one option
         if (lowestEntropy.cell.options.Count == 0) return;
-        Debug.Log(lowestEntropy.cell.options.Count);
+        //Debug.Log(lowestEntropy.cell.options.Count);
 
         lowestEntropy.cell.options = new List<int>() { lowestEntropy.cell.options[UnityEngine.Random.Range(0, lowestEntropy.cell.options.Count)]};
 
@@ -333,7 +350,7 @@ public class GridCreator : MonoBehaviour
             {
                 //GameObject tile = null;
 
-                GameObject tile = Instantiate(Plane1, new Vector3(j, 0, -i), Quaternion.identity);
+                GameObject tile = Instantiate(Block0, new Vector3(j, 0, -i), Quaternion.identity);
                 tile.SetActive(false);
                 tile.transform.SetParent(transform);
 
