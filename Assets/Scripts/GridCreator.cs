@@ -129,6 +129,7 @@ public class GridCreator : MonoBehaviour
     int COL = 20;
 
     List<List<Cell>> grid = new List<List<Cell>>();
+
     List<List<GameObject>> gridGO = new List<List<GameObject>> ();
     List<GameObject> tilesGO;
 
@@ -138,7 +139,7 @@ public class GridCreator : MonoBehaviour
         // just checking this code should have different tileset than the default tileset.
         // we have total of 5 tiles currently
  
-        tiles.Add(new Tile(Block0, new List<int>() { 0, 0, 0, 0}));
+        tiles.Add(new Tile(Block0, new List<int>() { 1, 1, 1, 1}));
 
         tiles.Add(new Tile(Block1, new List<int>() { 1, 1, 0, 1}));
         tiles.Add(new Tile(Block11, new List<int>() { 1, 1, 1, 0}));
