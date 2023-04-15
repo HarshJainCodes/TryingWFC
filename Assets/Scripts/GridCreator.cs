@@ -63,6 +63,14 @@ public class Tile
                 {
                     tile1.left.Add(j);
                 }
+
+                /*if (tile1.edges[0] == 3 && (tile2.edges[0] == 1 && tile2.edges[1] == 1 && tile2.edges[2] == 1 && tile2.edges[3] == 1))
+                {
+                    tile1.up.Add(j);
+                    tile1.down.Add(j);
+                    tile1.left.Add(j);
+                    tile1.right.Add(j);
+                }*/
             }
         }
     }
@@ -95,6 +103,7 @@ public class Tile
 public class GridCreator : MonoBehaviour
 {
     [SerializeField] GameObject Block0;
+    [SerializeField] GameObject Block00;
 
     [SerializeField] GameObject Block1;
     [SerializeField] GameObject Block11;
@@ -138,8 +147,9 @@ public class GridCreator : MonoBehaviour
     {
         // just checking this code should have different tileset than the default tileset.
         // we have total of 5 tiles currently
- 
+
         tiles.Add(new Tile(Block0, new List<int>() { 1, 1, 1, 1}));
+        //tiles.Add(new Tile(Block00, new List<int>() { 3, 3, 3, 3}));
 
         tiles.Add(new Tile(Block1, new List<int>() { 1, 1, 0, 1}));
         tiles.Add(new Tile(Block11, new List<int>() { 1, 1, 1, 0}));
@@ -164,9 +174,10 @@ public class GridCreator : MonoBehaviour
         tiles.Add(new Tile(Block55, new List<int>() { 1, 0, 0, 1}));
         tiles.Add(new Tile(Block555, new List<int>() { 1, 1, 0, 0}));
         tiles.Add(new Tile(Block5555, new List<int>() { 0, 1, 1, 0}));
-      
+
 
         tilesGO = new List<GameObject>() { Block0, Block1, Block11, Block111, Block1111, Block2, Block22, Block222, Block2222, Block3, Block33, Block4, Block44, Block444, Block4444, Block5, Block55, Block555, Block5555};
+
 
         Tile.GenerateTileRules(tiles);
 
@@ -185,7 +196,7 @@ public class GridCreator : MonoBehaviour
             grid.Add(row);
         }
 
-        grid[2][2].options = new List<int>() {3};
+        grid[10][10].options = new List<int>() {0};
     }
 
     void Update()
@@ -270,13 +281,32 @@ public class GridCreator : MonoBehaviour
         if (lowestEntropy.cell.options.Count == 0) return;
         //Debug.Log(lowestEntropy.cell.options.Count);
 
-        lowestEntropy.cell.options = new List<int>() { lowestEntropy.cell.options[UnityEngine.Random.Range(0, lowestEntropy.cell.options.Count)]};
+        bool OneFound = false;
+        for (int i = 0; i < lowestEntropy.cell.options.Count; i++)
+        {
+            if (lowestEntropy.cell.options[i] == 1)
+            {
+                if (UnityEngine.Random.Range(0, 1) > 0.5)
+                {
+                    lowestEntropy.cell.options = new List<int>() { 1 };
+                    OneFound = true;
+                    
+                }
+                break;
+
+            }
+        }
+        if (!OneFound)
+        {
+            lowestEntropy.cell.options = new List<int>() { lowestEntropy.cell.options[UnityEngine.Random.Range(0, lowestEntropy.cell.options.Count)] };
+        }
+
 
         // since it is collapsed make it visible
         //gridGO[lowestEntropy.gridX][lowestEntropy.gridY].SetActive(true);
 
         // change its material to the option that it has chosen
-        SwapQuadMat swapQuadMatScript = gridGO[lowestEntropy.gridX][lowestEntropy.gridY].GetComponent<SwapQuadMat>();
+        //SwapQuadMat swapQuadMatScript = gridGO[lowestEntropy.gridX][lowestEntropy.gridY].GetComponent<SwapQuadMat>();
         //swapQuadMatScript.SwapMat(quadmaterials[lowestEntropy.cell.options[0]]);
         Destroy(gridGO[lowestEntropy.gridX][lowestEntropy.gridY]);
 
