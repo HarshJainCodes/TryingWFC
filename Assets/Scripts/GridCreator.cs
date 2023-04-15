@@ -21,17 +21,27 @@ struct LowestEntropyInfo
 public class Tile
 {
     public GameObject tile;
-    public List<int> edges;
+    public List<string> edges;
 
     public List<int> up = new List<int>();
     public List<int> right = new List<int>();
     public List<int> down = new List<int>();
     public List<int> left = new List<int>();
 
-    public Tile(GameObject tile, List<int> edges)
+    public Tile(GameObject tile, List<string> edges)
     {
         this.tile = tile;
         this.edges = edges;
+    }
+
+
+    private static bool CompareString(string str1, string str2)
+    {
+        char[] str2Array = str2.ToCharArray();
+        Array.Reverse(str2Array);
+        string revstr2 = new string(str2Array);
+
+        return str1 == revstr2;
     }
 
     public static void GenerateTileRules(List<Tile> allTiles)
@@ -44,33 +54,25 @@ public class Tile
             {
                 Tile tile2 = allTiles[j];
 
-                if (tile1.edges[0] == tile2.edges[2])
+                if (CompareString(tile1.edges[0], tile2.edges[2]))
                 {
                     tile1.up.Add(j);
                 }
 
-                if (tile1.edges[1] == tile2.edges[3])
+                if (CompareString(tile1.edges[1], tile2.edges[3]))
                 {
                     tile1.right.Add(j);
                 }
 
-                if (tile1.edges[2] == tile2.edges[0])
+                if (CompareString(tile1.edges[2], tile2.edges[0]))
                 {
                     tile1.down.Add(j);
                 }
 
-                if (tile1.edges[3] == tile2.edges[1])
+                if (CompareString(tile1.edges[3], tile2.edges[1]))
                 {
                     tile1.left.Add(j);
                 }
-
-                /*if (tile1.edges[0] == 3 && (tile2.edges[0] == 1 && tile2.edges[1] == 1 && tile2.edges[2] == 1 && tile2.edges[3] == 1))
-                {
-                    tile1.up.Add(j);
-                    tile1.down.Add(j);
-                    tile1.left.Add(j);
-                    tile1.right.Add(j);
-                }*/
             }
         }
     }
@@ -148,7 +150,7 @@ public class GridCreator : MonoBehaviour
         // just checking this code should have different tileset than the default tileset.
         // we have total of 5 tiles currently
 
-        tiles.Add(new Tile(Block0, new List<int>() { 1, 1, 1, 1}));
+        /*tiles.Add(new Tile(Block0, new List<int>() { 1, 1, 1, 1}));
         //tiles.Add(new Tile(Block00, new List<int>() { 3, 3, 3, 3}));
 
         tiles.Add(new Tile(Block1, new List<int>() { 1, 1, 0, 1}));
@@ -173,12 +175,39 @@ public class GridCreator : MonoBehaviour
         tiles.Add(new Tile(Block5, new List<int>() { 0, 0, 1, 1}));
         tiles.Add(new Tile(Block55, new List<int>() { 1, 0, 0, 1}));
         tiles.Add(new Tile(Block555, new List<int>() { 1, 1, 0, 0}));
-        tiles.Add(new Tile(Block5555, new List<int>() { 0, 1, 1, 0}));
+        tiles.Add(new Tile(Block5555, new List<int>() { 0, 1, 1, 0}));*/
+
+        tiles.Add(new Tile(Block0, new List<string>() { "aaa", "aaa", "aaa", "aaa" }));
+
+        tiles.Add(new Tile(Block1, new List<string>() { "aaa", "aab", "ccc", "baa" }));
+        tiles.Add(new Tile(Block11, new List<string>() { "baa", "aaa", "aab", "ccc" }));
+        tiles.Add(new Tile(Block111, new List<string>() { "ccc", "baa", "aaa", "aab" }));
+        tiles.Add(new Tile(Block1111, new List<string>() { "aab", "ccc", "baa", "aaa" }));
+
+        tiles.Add(new Tile(Block2, new List<string>() { "ccc", "ccc", "bab", "ccc"}));
+        tiles.Add(new Tile(Block22, new List<string>() { "ccc", "ccc", "ccc", "bab" }));
+        tiles.Add(new Tile(Block222, new List<string>() { "bab", "ccc", "ccc", "ccc" }));
+        tiles.Add(new Tile(Block2222, new List<string>() { "ccc", "bab", "ccc", "ccc"}));
+
+        tiles.Add(new Tile(Block3, new List<string>() { "ccc", "bab", "ccc", "bab"}));
+        tiles.Add(new Tile(Block33, new List<string>() { "bab", "ccc", "bab", "ccc"}));
+
+        
+        tiles.Add(new Tile(Block4, new List<string>() { "aab", "aaa", "baa", "aaa" }));
+        tiles.Add(new Tile(Block44, new List<string>() { "aaa", "aab", "aaa", "baa" }));
+        tiles.Add(new Tile(Block444, new List<string>() { "baa", "aaa", "aab", "aaa" }));
+        tiles.Add(new Tile(Block4444, new List<string>() { "aaa", "baa", "aaa", "aab" }));
+
+        tiles.Add(new Tile(Block5, new List<string>() { "ccc", "ccc", "baa", "aab" }));
+        tiles.Add(new Tile(Block55, new List<string>() { "aab", "ccc", "ccc", "baa"}));
+        tiles.Add(new Tile(Block555, new List<string>() { "baa", "aab", "ccc", "ccc"}));
+        tiles.Add(new Tile(Block5555, new List<string>() { "ccc", "baa", "aab", "ccc"}));
 
 
+        //tilesGO = new List<GameObject>() { Block0, Block1, Block11, Block111, Block1111, Block2, Block22, Block222, Block2222, Block3, Block33, Block4, Block44, Block444, Block4444, Block5, Block55, Block555, Block5555};
+
+        //tilesGO = new List<GameObject>() { Block0, Block1, Block11, Block111, Block1111, Block2, Block22, Block222, Block2222, Block3, Block33, Block5, Block55, Block555, Block5555};
         tilesGO = new List<GameObject>() { Block0, Block1, Block11, Block111, Block1111, Block2, Block22, Block222, Block2222, Block3, Block33, Block4, Block44, Block444, Block4444, Block5, Block55, Block555, Block5555};
-
-
         Tile.GenerateTileRules(tiles);
 
         GenerateGrid();
